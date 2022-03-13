@@ -47,6 +47,8 @@ var fullInfoThreshold = 5;
 var objectives = []
 
 $(function () {
+    $("#button-reset-evidence").tooltip()
+
     setupEvidence()
     setupObjectives()
     reloadGhostList()
