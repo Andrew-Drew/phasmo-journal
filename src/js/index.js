@@ -52,7 +52,12 @@ $(function () {
     setupEvidence()
     setupObjectives()
     reloadGhostList()
-    document.getElementById("button-reset-evidence").onclick = resetEvidence
+
+    document.getElementById("button-reset-evidence")
+        .addEventListener('click', function () {
+            this.blur()
+            resetEvidence()
+        });
 });
 
 function resetEvidence() {
@@ -160,11 +165,17 @@ class ToggleButton {
     #state
     #allowIndeterminate
 
-    constructor(text, allowIndeterminate, onChange) {
+    constructor(text, tooltip, allowIndeterminate, onChange) {
         var button = document.createElement("button")
         button.className = "toggle-button btn btn-outline-info"
         button.type = "button"
         button.textContent = text
+
+        if (tooltip) {
+            button.dataset.toggle = "tooltip"
+            button.title = tooltip
+            $(button).tooltip()
+        }
 
         var func = this.#actionButtonClick.bind(this)
         button.addEventListener('click', func)
@@ -186,7 +197,14 @@ class ToggleButton {
             this.#onChange = value
     }
 
+    reset() {
+        this.#state = false
+        this.#button.className = "toggle-button btn btn-outline-info"
+        this.#notifyOnChange()
+    }
+
     #actionButtonClick() {
+        this.#button.blur()
         if (this.#state === false) {
             this.#state = true
             this.#button.className = "toggle-button btn btn-primary"
@@ -197,11 +215,12 @@ class ToggleButton {
             this.#state = null
             this.#button.className = "toggle-button btn btn-success completed"
         }
+
+        this.#notifyOnChange()
     }
 
-    reset() {
-        this.#state = false
-        this.#button.className = "toggle-button btn btn-outline-info"
+    #notifyOnChange() {
+        if (this.#onChange) this.#onChange.call(this, this.#state)
     }
 }
 
@@ -227,24 +246,24 @@ function addEvidence(wrapper, id, label, stretch) {
 
 function setupObjectives() {
     var frag = document.createDocumentFragment()
-    addObjective(frag, "Crucifix")
-    addObjective(frag, "Ghost event")
-    addObjective(frag, "Motion sensor")
-    addObjective(frag, "Ghost photo")
-    addObjective(frag, "EMF")
-    addObjective(frag, "Smudge sticks")
-    addObjective(frag, "Candle")
-    addObjective(frag, "Salt")
-    addObjective(frag, "Average sanity")
-    addObjective(frag, "Hunt")
-    addObjective(frag, "Repel")
+    addObjective(frag, "Crucifix", "Prevent the ghost from hunting with a Crucifix")
+    addObjective(frag, "Motion sensor", "Detect a ghost's presence with a Motion Sensor")
+    addObjective(frag, "Ghost event", "Have a member of your team witness a Ghost event")
+    addObjective(frag, "Ghost photo", "Capture a photo of the ghost")
+    addObjective(frag, "EMF", "Find evidence of paranormal activity with an EMF Reader")
+    addObjective(frag, "Smudge sticks", "Cleanse the area near the ghost using Smudge Sticks")
+    addObjective(frag, "Candle", "Get the Ghost to blow out a Candle")
+    addObjective(frag, "Salt", "Get a Ghost to walk through Salt")
+    addObjective(frag, "Average sanity", "Get an average sanity below 25%")
+    addObjective(frag, "Hunt", "Have a member of the team escape the Ghost during a Hunt")
+    addObjective(frag, "Repel", "Repel the Ghost with a Smudge Stick while it's chasing someone")
 
     var wrapper = document.getElementById("objectives-wrapper")
     wrapper.appendChild(frag)
 }
 
-function addObjective(wrapper, label) {
-    var objective = new ToggleButton(label, true)
+function addObjective(wrapper, label, tooltip) {
+    var objective = new ToggleButton(label, tooltip, true)
     wrapper.appendChild(objective.rootElement)
     objectives.push(objective)
 }

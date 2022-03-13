@@ -2,6 +2,10 @@
     --pm: 8px;
 }
 
+.tooltip {
+    pointer-events: none;
+}
+
 .row.thin-gutters {
     margin-left: -7.5px;
     margin-right: -7.5px;
