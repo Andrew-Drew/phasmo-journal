@@ -43,6 +43,31 @@ var ghosts = [
         ]
     },
     {
+        name: "Deogen",
+        wikiUrl: "https://phasmophobia.fandom.com/wiki/Deogen",
+        sanityThreshold: 40,
+        strengthsShort: [
+            "Always knows where players are during a hunt",
+            "Moves at a high speed with no player nearby"
+        ],
+        abilitiesShort: [
+            "Produces a unique response through the Spirit Box"
+        ],
+        weaknessesShort: [
+            "Significantly slows down when near the player",
+            "Has a lower hunt sanity threshold"
+        ],
+        notes: [
+            "The unique response can be triggered while standing within 1 metre of the Deogen (33% chance).",
+            "The response is constant heavy bull-like breathing."
+        ],
+        evidence: [
+            evidence.spiritBox,
+            evidence.writing,
+            evidence.dots
+        ]
+    },
+    {
         name: "Goryo",
         wikiUrl: "https://phasmophobia.fandom.com/wiki/Goryo",
         sanityThreshold: 50,
@@ -129,6 +154,31 @@ var ghosts = [
             evidence.spiritBox,
             evidence.orbs,
             evidence.writing
+        ]
+    },
+    {
+        name: "Moroi",
+        wikiUrl: "https://phasmophobia.fandom.com/wiki/Moroi",
+        sanityThreshold: 50,
+        strengthsShort: [
+            "Moves noticeably faster at low player sanity"
+        ],
+        abilitiesShort: [
+            "Can curse players, making them lose sanity faster while investigating"
+        ],
+        weaknessesShort: [
+            "Smudge sticks blind the ghost for longer during hunts"
+        ],
+        notes: [
+            "A player will be cursed when receiving a response on the spirit box or by hearing ghost sounds on the parabolic microphone.",
+            "When cursed, sanity drain is doubled and doesn't stop in lit areas.",
+            "The curse is paused outside of the investigation area (e.g. the house).",
+            "The curse can be removed using sanity pills."
+        ],
+        evidence: [
+            evidence.spiritBox,
+            evidence.writing,
+            evidence.freezingTemps
         ]
     },
     {
@@ -329,6 +379,28 @@ var ghosts = [
             evidence.emf,
             evidence.spiritBox,
             evidence.writing
+        ]
+    },
+    {
+        name: "Thaye",
+        wikiUrl: "https://phasmophobia.fandom.com/wiki/Thaye",
+        sanityThreshold: 75,
+        strengthsShort: [
+            "Becomes very active the first time a player gets nearby"
+        ],
+        weaknessesShort: [
+            "The more time players spend near it, the quieter and slower it becomes"
+        ],
+        notes: [
+            "The Thaye has an \"age\" parameter that decreases its general activity.",
+            "Every 1 to 2 minutes, the Thaye attempts to age if players are nearby.",
+            "Hunt sanity threshold changes depending on age from 75% down to 15% at steps of 6%.",
+            "The age also decreases the ghost's activity and movement speed."
+        ],
+        evidence: [
+            evidence.orbs,
+            evidence.writing,
+            evidence.dots
         ]
     },
     {
