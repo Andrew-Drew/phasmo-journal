@@ -1,0 +1,406 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+/* v1.2 */
+
+/* #region Variables */
+:root {
+    /* font colors */
+    --fc-primary: #212529;
+    --fc-nav: rgba(52, 58, 64, .75);
+    --fc-nav-highlight: rgba(52, 58, 64, .9);
+    --fc-nav-active: #343a40;
+    --fc-muted: #6c757d;
+    --fc-anchor: #3030f7;
+    --fc-anchor-hover: #1619cb;
+    --fc-anchor-highlight: #eaeaea;
+    /* Same as --fc-primary on dark mode */
+    /* backgrounds */
+    --bg-background: #f2f3f8;
+    --bg-foreground: #fff;
+    --bg-highlight: #e9ecef;
+    /* dropdown */
+    --dropdown-background: var(--bg-background);
+    --dropdown-item-hover: #e9ecef;
+    --dropdown-item-active: #007bff;
+    --fc-dropdown-item-active: #fff;
+    --dropdown-separator: var(--cl-separator);
+    --dropdown-border: rgba(0, 0, 0, .15);
+    /* nav */
+    --cl-separator: #e9ecef;
+    --cl-nav-background: #fff;
+    --cl-nav-shadow: rgba(0, 0, 0, .05);
+    /* inputs */
+    --bg-input: #fff;
+    --bg-input-addon: #e9ecef;
+    --cl-input-border: #ced4da;
+    --cl-input-disabled: #e9ecef;
+    --cl-input-shadow: rgba(0, 123, 255, 0.25);
+}
+
+.dark-mode {
+    /* font colors */
+    --fc-primary: #eaeaea;
+    --fc-nav: rgba(255, 255, 255, .6);
+    --fc-nav-highlight: rgba(255, 255, 255, .9);
+    --fc-nav-active: #eaeaea;
+    --fc-muted: rgba(255, 255, 255, .5);
+    --fc-anchor: #6eb9f7;
+    --fc-anchor-hover: #9fd1f9;
+    --fc-anchor-highlight: #212529;
+    /* Same as --fc-primary on light mode */
+    /* backgrounds */
+    --bg-background: #121212;
+    --bg-foreground: #262626;
+    --bg-highlight: #333333;
+    /* dropdown */
+    --dropdown-background: var(--bg-background);
+    --dropdown-item-hover: #232B32;
+    --dropdown-item-active: #202945;
+    --fc-dropdown-item-active: #eaeaea;
+    --dropdown-separator: var(--cl-separator);
+    --dropdown-border: #5C5C5C;
+    /* nav */
+    --cl-separator: #414141;
+    --cl-nav-background: #262626;
+    --cl-nav-shadow: rgba(127, 127, 127, .1);
+    /* inputs */
+    --bg-input: #262626;
+    --bg-input-addon: #3C3C3C;
+    --cl-input-border: #5C5C5C;
+    --cl-input-disabled: #414141;
+    --cl-input-shadow: rgba(255, 255, 255, 0.15);
+}
+
+/* #endregion Variables */
+
+/* #region Generic */
+html {
+    min-height: 100%
+}
+
+body {
+    background: var(--bg-background);
+    color: var(--fc-primary);
+}
+
+.text-muted {
+    color: var(--fc-muted) !important
+}
+
+/* #endregion Generic */
+
+/* #region Buttons */
+.btn-pill {
+    border-radius: 99rem;
+}
+
+.btn-icon {
+    padding: 0;
+    width: 2.5rem;
+    height: 2.5rem;
+}
+
+.btn [class^="fa-"],
+.btn [class*=" fa-"],
+.btn-icon {
+    font-size: 1.2rem;
+}
+
+/* #endregion Buttons */
+
+/* #region Unstyled link */
+a.link-unstyled {
+    color: inherit;
+    text-decoration: none !important;
+}
+
+/* #endregion Unstyled link */
+
+/* #region Simple link */
+a.simple-link,
+a.simple-link:visited {
+    color: var(--fc-anchor);
+    position: relative;
+    text-decoration: none !important;
+    -webkit-transition: color 0.3s ease;
+    transition: color .3s ease;
+}
+
+a.simple-link:hover,
+a.simple-link:focus {
+    color: var(--fc-anchor-hover);
+}
+
+a.simple-link::after {
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 0;
+    border-bottom: 1px solid var(--fc-anchor-hover);
+    -webkit-transition: width 0.3s ease;
+    transition: width 0.3s ease;
+}
+
+a.simple-link:hover::after,
+a.simple-link:focus::after {
+    width: 100%;
+}
+
+/* #endregion Simple link */
+
+/* #region Stealthy link */
+a.stealthy-link,
+a.stealthy-link:visited {
+    color: inherit;
+    text-underline-offset: .2em;
+    text-decoration: underline var(--fc-anchor);
+    -webkit-transition: color 0.3s ease;
+    transition: color .3s ease;
+}
+
+@supports not (text-underline-offset: .2em) {
+    a.stealthy-link {
+        text-underline-position: under
+    }
+}
+
+a.stealthy-link:hover,
+a.stealthy-link:focus {
+    color: var(--fc-anchor);
+}
+
+/* #endregion Stealthy link */
+
+/* #region Highlight link */
+a.highlight-link,
+a.highlight-link:visited {
+    color: var(--fc-anchor);
+    position: relative;
+    z-index: 0;
+    text-decoration: none !important;
+    -webkit-transition: color .3s ease;
+    transition: color .3s ease;
+}
+
+a.highlight-link:hover,
+a.highlight-link:focus {
+    color: var(--fc-anchor-highlight);
+}
+
+a.highlight-link::after {
+    display: block;
+    content: '';
+    position: absolute;
+    bottom: -.2em;
+    left: 0;
+    right: 0;
+    height: .1em;
+    z-index: -1;
+    background: var(--fc-anchor-hover);
+    -webkit-transition: height .3s ease, left .3s ease, right .3s ease;
+    transition: height 0.3s ease, left .3s ease, right .3s ease;
+}
+
+a.highlight-link:hover::after,
+a.highlight-link:focus::after {
+    height: 1.4em;
+    left: -.2em;
+    right: -.2em;
+}
+
+/* #endregion Highlight link */
+
+/* #region Portlet */
+.portlet {
+    background: var(--bg-foreground);
+    display: flex;
+    flex-direction: column;
+}
+
+.portlet-rounded {
+    border-radius: 4px
+}
+
+.portlet-margin {
+    margin-top: 1rem
+}
+
+.portlet-header {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    padding: 1rem 1rem 0 1rem;
+}
+
+.portlet-header-title {
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+.portlet-header-tools {
+    margin-left: auto;
+}
+
+.portlet-body {
+    padding: 1rem;
+    flex-grow: 1;
+}
+
+.portlet-footer {
+    padding: 0 1rem 1rem 1rem;
+}
+
+.portlet-slim .portlet-body {
+    padding: .5rem
+}
+
+.portlet-body-fit {
+    padding: 0
+}
+
+/* #endregion Portlet */
+
+/* #region Header */
+header .navbar-toggler {
+    color: var(--fc-primary)
+}
+
+header .navbar {
+    margin-bottom: 1rem;
+    background: var(--cl-nav-background);
+    box-shadow: 0 .25rem .75rem var(--cl-nav-shadow);
+}
+
+header .nav-item {
+    position: relative;
+    font-size: 1em;
+}
+
+header .nav-item::after {
+    position: absolute;
+    display: block;
+    content: '';
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 0;
+    height: 2px;
+    margin: 0 auto;
+    transition: width .3s ease;
+    background: var(--fc-nav-highlight);
+    background: linear-gradient(to right, transparent, var(--fc-nav-highlight), transparent);
+}
+
+header .nav-item:hover::after,
+header .nav-item:focus-within::after {
+    width: 100%;
+}
+
+header .nav-item.active::after {
+    width: 100%;
+    background: var(--fc-nav-active);
+    background: linear-gradient(to right, transparent, var(--fc-nav-active), transparent);
+}
+
+header .nav-item .nav-link {
+    color: var(--fc-nav)
+}
+
+header .nav-item:hover .nav-link {
+    color: var(--fc-nav-highlight)
+}
+
+header .nav-item.active .nav-link {
+    color: var(--fc-nav-active)
+}
+
+/* #endregion Header */
+
+/* #region Bootstrap */
+/* #region Bootstrap dropdown */
+.dropdown-menu {
+    padding: 0;
+    background: var(--dropdown-background);
+    border-color: var(--dropdown-border);
+}
+
+.dropdown-item {
+    padding: .75rem 1.5rem;
+    color: var(--fc-primary);
+}
+
+.dropdown-item:hover,
+.dropdown-item:focus {
+    color: var(--fc-primary);
+    background: var(--dropdown-item-hover);
+}
+
+.dropdown-item:active {
+    color: var(--fc-dropdown-item-active);
+    background: var(--dropdown-item-active);
+}
+
+.dropdown-divider {
+    border-color: var(--dropdown-separator);
+}
+
+/* #endregion Bootstrap dropdown */
+
+/* #region Bootstrap form-control */
+.form-control,
+.form-control:focus {
+    background: var(--bg-input);
+    color: var(--fc-primary);
+    border: 1px solid var(--cl-input-border);
+}
+
+.input-group-text {
+    background: var(--bg-input-addon);
+    color: var(--fc-primary);
+    border: 1px solid var(--cl-input-border);
+}
+
+.form-control:focus {
+    box-shadow: 0 0 .5rem .2rem var(--cl-input-shadow);
+}
+
+.form-control[type="file"] {
+    height: auto
+}
+
+.form-control::-webkit-input-placeholder {
+    color: var(--fc-muted);
+    opacity: 1;
+}
+
+.form-control::-moz-placeholder {
+    color: var(--fc-muted);
+    opacity: 1;
+}
+
+.form-control::-ms-input-placeholder {
+    color: var(--fc-muted);
+    opacity: 1;
+}
+
+.form-control:-ms-input-placeholder {
+    color: var(--fc-muted);
+    opacity: 1;
+}
+
+.form-control::placeholder {
+    color: var(--fc-muted);
+    opacity: 1;
+}
+
+.form-control:disabled,
+input.form-control:read-only {
+    background: var(--cl-input-disabled);
+    opacity: .5;
+}
+
+/* #endregion Bootstrap form-control */
+/* #endregion Bootstrap */
