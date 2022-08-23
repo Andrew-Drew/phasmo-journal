@@ -1,7 +1,7 @@
 ﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
 
-/* v1.2 */
+/* v1.4 */
 
 /* #region Variables */
 :root {
@@ -13,8 +13,7 @@ for details on configuring this project to bundle and minify static web assets. 
     --fc-muted: #6c757d;
     --fc-anchor: #3030f7;
     --fc-anchor-hover: #1619cb;
-    --fc-anchor-highlight: #eaeaea;
-    /* Same as --fc-primary on dark mode */
+    --fc-anchor-highlight: #eaeaea; /* Same as --fc-primary on dark mode */
     /* backgrounds */
     --bg-background: #f2f3f8;
     --bg-foreground: #fff;
@@ -47,8 +46,7 @@ for details on configuring this project to bundle and minify static web assets. 
     --fc-muted: rgba(255, 255, 255, .5);
     --fc-anchor: #6eb9f7;
     --fc-anchor-hover: #9fd1f9;
-    --fc-anchor-highlight: #212529;
-    /* Same as --fc-primary on light mode */
+    --fc-anchor-highlight: #212529; /* Same as --fc-primary on light mode */
     /* backgrounds */
     --bg-background: #121212;
     --bg-foreground: #262626;
@@ -71,23 +69,23 @@ for details on configuring this project to bundle and minify static web assets. 
     --cl-input-disabled: #414141;
     --cl-input-shadow: rgba(255, 255, 255, 0.15);
 }
-
 /* #endregion Variables */
 
 /* #region Generic */
-html {
-    min-height: 100%
-}
-
 body {
+    min-height: 100vh;
     background: var(--bg-background);
     color: var(--fc-primary);
+    display: flex;
+    flex-direction: column;
 }
 
-.text-muted {
-    color: var(--fc-muted) !important
+.main-container {
+    padding-top: 15px;
+    padding-bottom: 15px;
 }
 
+.text-muted { color: var(--fc-muted) !important }
 /* #endregion Generic */
 
 /* #region Buttons */
@@ -114,7 +112,6 @@ a.link-unstyled {
     color: inherit;
     text-decoration: none !important;
 }
-
 /* #endregion Unstyled link */
 
 /* #region Simple link */
@@ -148,7 +145,6 @@ a.simple-link:hover::after,
 a.simple-link:focus::after {
     width: 100%;
 }
-
 /* #endregion Simple link */
 
 /* #region Stealthy link */
@@ -171,7 +167,6 @@ a.stealthy-link:hover,
 a.stealthy-link:focus {
     color: var(--fc-anchor);
 }
-
 /* #endregion Stealthy link */
 
 /* #region Highlight link */
@@ -210,7 +205,6 @@ a.highlight-link:focus::after {
     left: -.2em;
     right: -.2em;
 }
-
 /* #endregion Highlight link */
 
 /* #region Portlet */
@@ -220,13 +214,8 @@ a.highlight-link:focus::after {
     flex-direction: column;
 }
 
-.portlet-rounded {
-    border-radius: 4px
-}
-
-.portlet-margin {
-    margin-top: 1rem
-}
+.portlet-rounded { border-radius: 4px }
+.portlet-margin { margin-top: 1rem }
 
 .portlet-header {
     display: flex;
@@ -253,23 +242,14 @@ a.highlight-link:focus::after {
     padding: 0 1rem 1rem 1rem;
 }
 
-.portlet-slim .portlet-body {
-    padding: .5rem
-}
-
-.portlet-body-fit {
-    padding: 0
-}
-
+.portlet-slim .portlet-body { padding: .5rem }
+.portlet-body-fit { padding: 0 }
 /* #endregion Portlet */
 
 /* #region Header */
-header .navbar-toggler {
-    color: var(--fc-primary)
-}
+header .navbar-toggler { color: var(--fc-primary) }
 
-header .navbar {
-    margin-bottom: 1rem;
+header {
     background: var(--cl-nav-background);
     box-shadow: 0 .25rem .75rem var(--cl-nav-shadow);
 }
@@ -305,19 +285,22 @@ header .nav-item.active::after {
     background: linear-gradient(to right, transparent, var(--fc-nav-active), transparent);
 }
 
-header .nav-item .nav-link {
-    color: var(--fc-nav)
-}
-
-header .nav-item:hover .nav-link {
-    color: var(--fc-nav-highlight)
-}
-
-header .nav-item.active .nav-link {
-    color: var(--fc-nav-active)
-}
-
+header .nav-item .nav-link { color: var(--fc-nav) }
+header .nav-item:hover .nav-link { color: var(--fc-nav-highlight) }
+header .nav-item.active .nav-link { color: var(--fc-nav-active) }
 /* #endregion Header */
+
+/* #region Footer */
+footer {
+    background: var(--cl-nav-background);
+    box-shadow: 0 -0.25rem .75rem var(--cl-nav-shadow);
+    padding: .5rem 1rem;
+}
+
+footer > .container {
+    padding: 0 !important
+}
+/* #endregion Footer */
 
 /* #region Bootstrap */
 /* #region Bootstrap dropdown */
@@ -346,12 +329,10 @@ header .nav-item.active .nav-link {
 .dropdown-divider {
     border-color: var(--dropdown-separator);
 }
-
 /* #endregion Bootstrap dropdown */
 
 /* #region Bootstrap form-control */
-.form-control,
-.form-control:focus {
+.form-control, .form-control:focus {
     background: var(--bg-input);
     color: var(--fc-primary);
     border: 1px solid var(--cl-input-border);
@@ -367,9 +348,7 @@ header .nav-item.active .nav-link {
     box-shadow: 0 0 .5rem .2rem var(--cl-input-shadow);
 }
 
-.form-control[type="file"] {
-    height: auto
-}
+.form-control[type="file"] { height: auto }
 
 .form-control::-webkit-input-placeholder {
     color: var(--fc-muted);
@@ -377,16 +356,6 @@ header .nav-item.active .nav-link {
 }
 
 .form-control::-moz-placeholder {
-    color: var(--fc-muted);
-    opacity: 1;
-}
-
-.form-control::-ms-input-placeholder {
-    color: var(--fc-muted);
-    opacity: 1;
-}
-
-.form-control:-ms-input-placeholder {
     color: var(--fc-muted);
     opacity: 1;
 }
@@ -401,6 +370,5 @@ input.form-control:read-only {
     background: var(--cl-input-disabled);
     opacity: .5;
 }
-
 /* #endregion Bootstrap form-control */
 /* #endregion Bootstrap */
