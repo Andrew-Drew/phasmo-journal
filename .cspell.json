@@ -1,0 +1,25 @@
+{
+    "version": "0.2",
+    "language": "en",
+    "words": [
+        "phasmo",
+        "phasmophobia"
+    ],
+    "flagWords": [],
+    "dictionaries": [
+        "custom-words",
+        "phasmo-words"
+    ],
+    "dictionaryDefinitions": [
+        {
+            "name": "custom-words",
+            "path": "./.cspell/custom-words.txt",
+            "addWords": true
+        },
+        {
+            "name": "phasmo-words",
+            "path": "./.cspell/phasmo-words.txt",
+            "addWords": true
+        }
+    ]
+}

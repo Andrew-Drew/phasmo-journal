@@ -1,0 +1,18 @@
+cooldown
+handprint
+handprints
+
+# Ghost names
+Deogen
+Goryo
+Hantu
+Moroi
+Myling
+Obake
+Oni
+Onis
+Onryo
+Raiju
+Thaye
+Yokai
+Yurei
