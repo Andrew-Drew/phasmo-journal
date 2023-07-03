@@ -105,8 +105,11 @@ function watchFiles() {
     gulp.watch(srcPath.sass, sassBuild);
     gulp.watch(srcPath.ts, tsBuild);
 
-    if (looseFiles.length > 0)
-        gulp.watch(looseFiles, looseFilesBuild);
+    if (looseFiles.length > 0) {
+        gulp.watch(looseFiles, {
+            base: srcDir, cwd: srcDir
+        }, looseFilesBuild);
+    }
 }
 
 // BrowserSync
