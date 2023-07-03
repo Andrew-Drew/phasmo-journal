@@ -2,35 +2,33 @@
 
 <html lang="en">
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Phasmo journal</title>
-    <meta name="description" content="A quick and dirty companion app for phasmophobia.">
-    <meta name="author" content="SitePoint">
+        <title>Phasmo journal</title>
+        <meta name="description" content="A quick and dirty companion app for Phasmophobia.">
+        <meta name="author" content="Andrew-Drew">
 
-    <meta property="og:title" content="Phasmo journal">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://www.sitepoint.com/a-basic-html5-template/">
-    <meta property="og:description" content="A quick and dirty companion app for phasmophobia.">
-    <meta property="og:image" content="image.png">
+        <meta property="og:title" content="Phasmo journal">
+        <meta property="og:type" content="website">
+        <meta property="og:description" content="A quick and dirty companion app for Phasmophobia.">
 
-    <link rel="icon" href="/favicon.ico">
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+        <link rel="icon" href="/favicon.ico">
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
         integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="css/site.css">
-    <link rel="stylesheet" href="css/index.css?v=2">
-</head>
+        crossorigin="anonymous" referrerpolicy="no-referrer"/>
+        <link rel="stylesheet" href="css/site.css">
+        <link rel="stylesheet" href="css/index.css?v=2">
+    </head>
 
-<body class="dark-mode">
-    <!--
+    <body class="dark-mode">
+        <!--
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm">
             <div class="container-fluid">
@@ -52,68 +50,66 @@
     </header>
     -->
 
-    <div class="container-fluid main-container flex-grow-1">
-        <main role="main">
-            <div class="row thin-gutters">
-                <div class="col">
-                    <div id="ghosts-wrapper" class="d-flex flex-wrap justify-content-center"></div>
-                </div>
+        <div class="container-fluid main-container flex-grow-1">
+            <main role="main">
+                <div class="row thin-gutters">
+                    <div class="col">
+                        <div id="ghosts-wrapper" class="d-flex flex-wrap justify-content-center"></div>
+                    </div>
 
-                <div class="col-auto">
-                    <div class="portlet portlet-rounded">
-                        <div class="portlet-header">
-                            <div class="portlet-header-title">Evidence</div>
+                    <div class="col-auto">
+                        <div class="portlet portlet-rounded">
+                            <div class="portlet-header">
+                                <div class="portlet-header-title">Evidence</div>
 
-                            <div class="portlet-header-tools">
-                                <button type="button" id="button-reset-evidence"
+                                <div class="portlet-header-tools">
+                                    <button type="button" id="button-reset-evidence"
                                     class="btn btn-outline-primary btn-pill btn-icon" data-toggle="tooltip"
                                     title="Reset all">
-                                    <span class="fa-solid fa-arrow-rotate-right"></span>
-                                </button>
+                                        <span class="fa-solid fa-arrow-rotate-right"></span>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="portlet-body">
+                                <div id="evidence-wrapper"></div>
                             </div>
                         </div>
 
-                        <div class="portlet-body">
-                            <div id="evidence-wrapper"></div>
-                        </div>
-                    </div>
-
-                    <div class="portlet portlet-rounded row-margin-top">
-                        <div class="portlet-body">
-                            <input type="text" id="input-ghost-name" class="form-control" placeholder="Ghost name">
-                        </div>
-                    </div>
-
-                    <div class="portlet portlet-rounded row-margin-top">
-                        <div class="portlet-header">
-                            <div class="portlet-header-title">Objectives</div>
+                        <div class="portlet portlet-rounded row-margin-top">
+                            <div class="portlet-body">
+                                <input type="text" id="input-ghost-name" class="form-control" placeholder="Ghost name">
+                            </div>
                         </div>
 
-                        <div class="portlet-body">
-                            <div id="objectives-wrapper"></div>
+                        <div class="portlet portlet-rounded row-margin-top">
+                            <div class="portlet-header">
+                                <div class="portlet-header-title">Objectives</div>
+                            </div>
+
+                            <div class="portlet-body">
+                                <div id="objectives-wrapper"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </main>
-    </div>
+            </main>
+        </div>
 
-    <footer>
-        <div class="text-right">Updated for Phasmo 0.6.2</div>
-    </footer>
+        <footer>
+            <div class="text-right">Updated for Phasmo 0.6.2</div>
+        </footer>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
-    </script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
-    </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
-    <script src="js/evidence_helper.js"></script>
-    <script src="js/index.js?v=2"></script>
-    <script src="js/ghost_list.js"></script>
-</body>
+        <script src="js/evidence-helper.js"></script>
+        <script src="js/ghost-list.js"></script>
+        <script src="js/index.js?v=2"></script>
+    </body>
 
 </html>

@@ -1,0 +1,12 @@
+{
+    "recommendations": [
+        "anteprimorac.html-end-tag-labels",
+        "ecmel.vscode-html-css",
+        "EditorConfig.EditorConfig",
+        "formulahendry.auto-close-tag",
+        "formulahendry.auto-rename-tag",
+        "VisualStudioExptTeam.intellicode-api-usage-examples",
+        "VisualStudioExptTeam.vscodeintellicode",
+        "Zignd.html-css-class-completion"
+    ]
+}

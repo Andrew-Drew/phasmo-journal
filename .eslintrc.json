@@ -1,0 +1,73 @@
+{
+    "root": true,
+    "env": {
+        "es2022": true,
+        "node": true
+    },
+    "extends": "standard-with-typescript",
+    "overrides": [],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaVersion": "latest",
+        "sourceType": "module",
+        "project": "./tsconfig.json"
+    },
+    "rules": {
+        // https://eslint.org/docs/latest/rules/
+        "no-unused-vars": "off",
+        "@typescript-eslint/no-unused-vars": [
+            "error",
+            {
+                "vars": "local",
+                "args": "after-used"
+            }
+        ],
+        "indent": [
+            "error",
+            4,
+            {
+                "SwitchCase": 1
+            }
+        ],
+        "@typescript-eslint/indent": [
+            "error",
+            4
+        ],
+        "curly": [
+            "error",
+            "multi-or-nest",
+            "consistent"
+        ],
+        "@typescript-eslint/space-before-function-paren": [
+            "error",
+            {
+                "anonymous": "always",
+                "named": "never"
+            }
+        ],
+        "@typescript-eslint/restrict-template-expressions": [
+            "error",
+            {
+                "allowNumber": true,
+                "allowBoolean": true
+            }
+        ],
+        "@typescript-eslint/strict-boolean-expressions": [
+            "error",
+            {
+                "allowString": true
+            }
+        ],
+        "@typescript-eslint/consistent-type-assertions": [
+            "error",
+            {
+                "assertionStyle": "as",
+                "objectLiteralTypeAssertions": "allow-as-parameter"
+            }
+        ]
+    },
+    "ignorePatterns": [
+        "/**/*.*",
+        "!/src/ts/**"
+    ]
+}

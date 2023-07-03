@@ -1,0 +1,38 @@
+{
+    "files.exclude": {
+        "node_modules": true,
+        "build": true,
+        "dist": true,
+        ".yarn": true,
+        "yarn.lock": true,
+        ".pnp.*": true
+    },
+    "[javascript][typescript]": {
+        "editor.defaultFormatter": "vscode.typescript-language-features"
+    },
+    "[scss][css]": {
+        "editor.defaultFormatter": "vscode.css-language-features"
+    },
+    "[json][jsonc]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "[html]": {
+        "editor.defaultFormatter": "vscode.html-language-features"
+    },
+    "taskExplorer.useGulp": true,
+    "taskExplorer.enableGulp": true,
+    "html.format.templating": true,
+    "files.insertFinalNewline": true,
+    "files.trimFinalNewlines": true,
+    "files.trimTrailingWhitespace": true,
+    "auto-close-tag.disableOnLanguage": [
+        "javascript",
+        "typescript"
+    ],
+    "html-css-class-completion.enableEmmetSupport": true,
+    "html-css-class-completion.includeGlobPattern": "**/*.{css,html}",
+    "search.exclude": {
+        "**/.yarn": true,
+        "**/.pnp.*": true
+    }
+}

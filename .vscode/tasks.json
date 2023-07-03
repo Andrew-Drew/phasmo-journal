@@ -1,0 +1,28 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "shell",
+            "label": "yarn: install",
+            "command": "yarn install",
+            "presentation": {
+                "reveal": "always",
+                "revealProblems": "onProblem",
+                "close": true
+            }
+        },
+        {
+            "type": "shell",
+            "group": "build",
+            "label": "gulp: build",
+            "detail": "Run gulp build",
+            "command": "gulp build",
+            // "dependsOn": "yarn: install",
+            "presentation": {
+                "reveal": "always",
+                "revealProblems": "onProblem",
+                "close": true
+            }
+        }
+    ]
+}

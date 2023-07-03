@@ -1,0 +1,32 @@
+{
+    "compilerOptions": {
+        "target": "ES6",
+        "module": "ES2022",
+        "allowJs": true,
+        "resolveJsonModule": true,
+        "esModuleInterop": true,
+        "forceConsistentCasingInFileNames": true,
+        "strict": true,
+        "skipLibCheck": false,
+        "outDir": "./dist/js",
+        "sourceMap": true,
+        "declaration": true,
+        "declarationMap": false,
+        "moduleResolution": "node",
+        "strictNullChecks": true,
+        "noImplicitAny": true,
+        /* Additional Checks */
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "noImplicitReturns": true,
+        "noFallthroughCasesInSwitch": true,
+        "types": [
+            // type definitions to load from the @types folder
+            "bootstrap",
+            "jquery"
+        ]
+    },
+    "include": [
+        "./src/ts/**/*.ts"
+    ]
+}
