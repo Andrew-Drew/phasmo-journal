@@ -11,7 +11,7 @@ import babel from 'gulp-babel';
 import { create as browserSyncCreate } from 'browser-sync';
 const browserSync = browserSyncCreate();
 
-import dartSass from 'sass';
+import * as dartSass from 'sass';
 import gulpSass from 'gulp-sass';
 const sass = gulpSass(dartSass);
 
