@@ -10,7 +10,7 @@
     "type": "module",
     "packageManager": "yarn@3.3.0",
     "engines": {
-        "node": ">=10"
+        "node": ">=18"
     },
     "scripts": {
         "gulp-tasks": "gulp --tasks --depth 1",
