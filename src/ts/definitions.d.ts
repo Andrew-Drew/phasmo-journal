@@ -6,6 +6,7 @@ interface Ghost {
     abilitiesShort?: string[]
     weaknessesShort: string[]
     evidence: EvidenceType[]
+    guaranteedEvidence?: EvidenceType[]
     notes?: string[]
 }
 

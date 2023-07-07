@@ -15,7 +15,10 @@ const ghosts: Ghost[] = [
             'Has a chance of making a unique shriek\u2011like paranormal sound on a parabolic microphone.'
         ],
         notes: [
-            'Banshees prefer singing ghost events over other types of ghost events.'
+            'Banshees prefer singing ghost events over other types of ghost events.',
+            'Only checks the sanity level of the target player when attempting to hunt.',
+            'If the target is inside the investigation area during a hunt, the Banshee will ignore all other players.',
+            'A Banshee will still attack other players if the target is outside of the investigation area.'
         ],
         evidence: [
             EvidenceType.Fingerprints,
@@ -32,11 +35,14 @@ const ghosts: Ghost[] = [
         ],
         abilitiesShort: [
             'Can hunt from 70% sanity.',
-            'Rare chance to hunt at any sanity percentage.',
-            'Shorter cooldown between hunts (20s).'
+            'Rare chance to hunt at any sanity percentage.'
         ],
         weaknessesShort: [
-            'Crucifix effectiveness is increased to 5m.'
+            'Crucifix effectiveness is increased to 5 m.'
+        ],
+        notes: [
+            'Smudge sticks prevent hunts for only 60 seconds (instead of 90 s).',
+            'Shorter cooldown between hunts (20 s instead of 25 s).'
         ],
         evidence: [
             EvidenceType.Fingerprints,
@@ -49,15 +55,15 @@ const ghosts: Ghost[] = [
         wikiUrl: 'https://phasmophobia.fandom.com/wiki/Deogen',
         sanityThreshold: 40,
         strengthsShort: [
-            'Always knows where players are during a hunt',
-            'Moves at a high speed with no player nearby'
+            'Always knows where players are during a hunt.',
+            'Moves at a high speed with no player nearby.'
         ],
         abilitiesShort: [
-            'Produces a unique response through the Spirit Box'
+            'Produces a unique response through the Spirit Box.'
         ],
         weaknessesShort: [
-            'Significantly slows down when near the player',
-            'Has a lower hunt sanity threshold'
+            'Significantly slows down when near the player.',
+            'Has a lower hunt sanity threshold.'
         ],
         notes: [
             'The unique response can be triggered while standing within 1 metre of the Deogen (33% chance).',
@@ -67,6 +73,9 @@ const ghosts: Ghost[] = [
             EvidenceType.SpiritBox,
             EvidenceType.Writing,
             EvidenceType.Dots
+        ],
+        guaranteedEvidence: [
+            EvidenceType.SpiritBox
         ]
     },
     {
@@ -74,7 +83,7 @@ const ghosts: Ghost[] = [
         wikiUrl: 'https://phasmophobia.fandom.com/wiki/Goryo',
         sanityThreshold: 50,
         strengthsShort: [
-            'Only interacts with a D.O.T.S. Projector if no players are nearby.',
+            'Only interacts with a D.O.T.S. Projector if no players are in the same room as the ghost.',
             'Usually only shows itself on camera if there are no people nearby.'
         ],
         abilitiesShort: [
@@ -83,9 +92,15 @@ const ghosts: Ghost[] = [
         weaknessesShort: [
             'They are are rarely seen far from their place of death.'
         ],
+        notes: [
+            'Cannot change favorite rooms by itself.'
+        ],
         evidence: [
             EvidenceType.Emf,
             EvidenceType.Fingerprints,
+            EvidenceType.Dots
+        ],
+        guaranteedEvidence: [
             EvidenceType.Dots
         ]
     },
@@ -97,7 +112,7 @@ const ghosts: Ghost[] = [
             'Lower temperatures allow the Hantu to move faster.'
         ],
         abilitiesShort: [
-            'During a hunt it emits frosty breath in freezing rooms.'
+            'During a hunt it emits frosty breath in any room as long as the breaker is off.'
         ],
         weaknessesShort: [
             'Moves slower in warmer areas.'
@@ -105,11 +120,15 @@ const ghosts: Ghost[] = [
         notes: [
             "The Hantu is highly dependent on the map's fuze box state, as the presence of power keeps the investigation area warm and thus slows the Hantu down.",
             'The Hantu is twice as likely to choose turning off the breaker as an interaction, compared to other ghosts.',
-            "Use smudge sticks to stop it from hunting and look for it's freezing breath."
+            'Use smudge sticks to stop it from hunting and look for its freezing breath.',
+            'Dead players cannot see the freezing breath.'
         ],
         evidence: [
             EvidenceType.Fingerprints,
             EvidenceType.Orbs,
+            EvidenceType.FreezingTemps
+        ],
+        guaranteedEvidence: [
             EvidenceType.FreezingTemps
         ]
     },
@@ -123,8 +142,13 @@ const ghosts: Ghost[] = [
         weaknessesShort: [
             "Turning off the location's power source will prevent the Jinn from using its ability."
         ],
+        abilitiesShort: [
+            'Can lower the sanity of all players inside the ghost room by 25% if the breaker is on.',
+            'An EMF reading is generated at the fuse box after activating it\'s ability.'
+        ],
         notes: [
-            'A Jinn cannot turn off a breaker directly through interacting with it. It can still turn it off indirectly by turning on a light to exceed the limit on the number of lights that can be turned on.'
+            'A Jinn cannot turn off a breaker directly through interacting with it. It can still turn it off indirectly by turning on a light to exceed the limit on the number of lights that can be turned on.',
+            'The Jinn will move at normal speeds if the breaker is off or the player is closer than 3 meters.'
         ],
         evidence: [
             EvidenceType.Emf,
@@ -163,13 +187,13 @@ const ghosts: Ghost[] = [
         wikiUrl: 'https://phasmophobia.fandom.com/wiki/Moroi',
         sanityThreshold: 50,
         strengthsShort: [
-            'Moves noticeably faster at low player sanity'
+            'Moves noticeably faster at low player sanity.'
         ],
         abilitiesShort: [
-            'Can curse players, making them lose sanity faster while investigating'
+            'Can curse players, making them lose sanity faster while investigating.'
         ],
         weaknessesShort: [
-            'Smudge sticks blind the ghost for longer during hunts'
+            'Smudge sticks blind the ghost for longer during hunts (12 s instead of 6 s).'
         ],
         notes: [
             'A player will be cursed when receiving a response on the spirit box or by hearing ghost sounds on the parabolic microphone.',
@@ -181,6 +205,9 @@ const ghosts: Ghost[] = [
             EvidenceType.SpiritBox,
             EvidenceType.Writing,
             EvidenceType.FreezingTemps
+        ],
+        guaranteedEvidence: [
+            EvidenceType.SpiritBox
         ]
     },
     {
@@ -191,7 +218,7 @@ const ghosts: Ghost[] = [
             'Known to be quieter when hunting.'
         ],
         abilitiesShort: [
-            'Has quieter footsteps during hunts.'
+            'Has quieter footsteps and vocalizations during hunts.'
         ],
         weaknessesShort: [
             'Produces paranormal sounds more frequently, these can be heard through a Parabolic Microphone.'
@@ -207,21 +234,27 @@ const ghosts: Ghost[] = [
         wikiUrl: 'https://phasmophobia.fandom.com/wiki/Obake',
         sanityThreshold: 50,
         strengthsShort: [
-            'When interacting with the environment, an Obake will rarely leave a trace.'
+            'Occasionally fails to leave fingerprints.'
         ],
         abilitiesShort: [
-            'Can leave fingerprints that disappear quicker.'
+            'Fingerprints can disappear faster than usual.',
+            'Has a chance to blink in a different ghost model when hunting.'
         ],
         weaknessesShort: [
-            'May leave behind six\u2011fingered handprints.'
+            'May leave behind six\u2011fingered handprints (~16.7% chance).',
+            'May leave two fingerprints on a light switch instead of one.'
         ],
         notes: [
+            'Only has a 75% chance of leaving fingerprints when interacting with objects.',
             'Because the six\u2011fingered handprint is unique to the Obake, it conclusively identifies it.'
         ],
         evidence: [
             EvidenceType.Emf,
             EvidenceType.Fingerprints,
             EvidenceType.Orbs
+        ],
+        guaranteedEvidence: [
+            EvidenceType.Fingerprints
         ]
     },
     {
@@ -229,14 +262,17 @@ const ghosts: Ghost[] = [
         wikiUrl: 'https://phasmophobia.fandom.com/wiki/Oni',
         sanityThreshold: 50,
         strengthsShort: [
-            'More active when people are nearby.',
-            'Throws objects at great speeds.'
+            'More active, interacting with objects more often, especially when people are nearby.'
+        ],
+        abilitiesShort: [
+            'Model remains visible for longer periods when hunting.'
         ],
         weaknessesShort: [
             'Onis are very active, making them easier to find.'
         ],
         notes: [
-            'An Oni will never perform the smoke\u2011type ghost event.'
+            'An Oni will never perform the smoke\u2011type ghost event ("airball").',
+            'Double the sanity drain (20% instead of 10%) when colliding with a player during a ghost event.'
         ],
         evidence: [
             EvidenceType.Emf,
@@ -252,14 +288,15 @@ const ghosts: Ghost[] = [
             'Extinguishing a flame can cause an Onryo to attack.'
         ],
         weaknessesShort: [
-            "The presence of flames reduces the Onryo's ability to attack.",
-            'When threatened, this ghost will be less likely to hunt.'
+            'The presence of flames prevents the ghost from hunting.'
+        ],
+        abilitiesShort: [
+            'Has a higher chance to blow out a flame than other ghosts.'
         ],
         notes: [
-            'If a lit candle, lighter, or campfire is near the ghost, it acts as a crucifix, preventing it from hunting with a range of 4m.',
-            "If it attempts to start a hunt in the lit candle's area, the hunt will fail and it will blow out the candle instead.",
-            'The chance to hunt after blowing out a flame increases each time it successfully kills a player during a hunt, with it having a near\u2011guaranteed chance after killing two players.',
-            'Has a higher chance to blow out a flame than other ghosts.'
+            'If it attempts to start a hunt within 4 meters of a lit flame (candle, lighter, or campfire), the hunt will fail and it will blow out the flame instead.',
+            'An Onryo will attempt a hunt for every third flame it blows out.',
+            'The frequency of blowing out flames increases each time it kills a player.'
         ],
         evidence: [
             EvidenceType.SpiritBox,
@@ -278,7 +315,8 @@ const ghosts: Ghost[] = [
             'Taking a photo of the Phantom will cause it to briefly disappear.'
         ],
         notes: [
-            'During a hunt, a Phantom will flash visible less frequently than other ghosts (every 1 to 2 seconds).'
+            'During a hunt, a Phantom will flash visible less frequently than other ghosts (every 1 to 2 seconds).',
+            "A Phantom will never be visible in photos (even during a hunt) and photos won't contain any interference."
         ],
         evidence: [
             EvidenceType.SpiritBox,
@@ -294,14 +332,15 @@ const ghosts: Ghost[] = [
             'Can throw multiple objects at once.'
         ],
         abilitiesShort: [
-            'Decrease sanity by throwing objects.'
+            "After activating its ability to throw multiple objects, the players' sanity will decrease by a percentage based on the amount of objects thrown."
         ],
         weaknessesShort: [
             'With nothing to throw, Poltergeists become powerless.'
         ],
         notes: [
             'Throwing objects will create an EMF level 3 reading.',
-            'Poltergeists can also throw items with higher force than other ghosts.'
+            'Poltergeists will sometimes throw items with higher force than other ghosts.',
+            'Has an increased rate of interacting with objects during a hunt.'
         ],
         evidence: [
             EvidenceType.SpiritBox,
@@ -314,7 +353,7 @@ const ghosts: Ghost[] = [
         wikiUrl: 'https://phasmophobia.fandom.com/wiki/Raiju',
         sanityThreshold: 50,
         strengthsShort: [
-            'A Raiju can siphon power from nearby electrical devices, making it move faster.'
+            'Nearby active electronics allow it to move faster during hunts.'
         ],
         weaknessesShort: [
             'Raiju are constantly disrupting electronic equipment when attacking, making it easier to track.'
@@ -339,6 +378,11 @@ const ghosts: Ghost[] = [
         weaknessesShort: [
             'Hiding from the Revenant will cause it to move very slowly.'
         ],
+        notes: [
+            'Speeds up immediately after detecting a player (visually or through speech/electronics).',
+            'Will not slow down until it reaches last known player location.',
+            'Slows down gradually (deceleration rate of 0.75 m/s²).'
+        ],
         evidence: [
             EvidenceType.Orbs,
             EvidenceType.Writing,
@@ -350,15 +394,19 @@ const ghosts: Ghost[] = [
         wikiUrl: 'https://phasmophobia.fandom.com/wiki/Shade',
         sanityThreshold: 35,
         strengthsShort: [
-            'Shades are much harder to find.'
+            'Shades are generally less active, which makes them much harder to find.'
         ],
         weaknessesShort: [
-            'The ghost will not enter a hunt if there are multiple people nearby.'
+            'Cannot interact with objects or start a hunt if a player is in the same room as the ghost.'
+        ],
+        abilitiesShort: [
+            'Produces hissing and shadowy form ghost events more often.'
         ],
         notes: [
-            'Shades prefer smoke\u2011type ghost events.',
-            'Shades can only hunt below an average sanity of 35%, lower than most other ghosts.',
-            "When it performs a ghost event, Shades will prefer hissing into the player's ear instead of a full manifestation. Even if it manifests for a ghost event, it will not appear fully solid."
+            'Prefers to do the "ghost mist" event rather than manifesting.',
+            'During manifestations, it has a higher chance of appearing as a shadow.',
+            'Can still perform interactions or start a hunt if it wanders into a room without players.',
+            'Shades can only hunt below an average sanity of 35%, lower than most other ghosts.'
         ],
         evidence: [
             EvidenceType.Emf,
@@ -375,7 +423,8 @@ const ghosts: Ghost[] = [
             'A Spirit can be temporarily stopped by burning Smudge Sticks near them.'
         ],
         notes: [
-            'When a Smudge Stick is used near a Spirit, it cannot initiate a hunt for 180 seconds instead of 90 seconds with most other ghosts.'
+            'When a Smudge Stick is used near a Spirit, it cannot initiate a hunt for 180 seconds (instead of 90 s).',
+            'The delay will apply even if the Spirit was smudged during a hunt.'
         ],
         evidence: [
             EvidenceType.Emf,
@@ -388,10 +437,10 @@ const ghosts: Ghost[] = [
         wikiUrl: 'https://phasmophobia.fandom.com/wiki/Thaye',
         sanityThreshold: 75,
         strengthsShort: [
-            'Becomes very active the first time a player gets nearby'
+            'Becomes very active the first time a player gets nearby.'
         ],
         weaknessesShort: [
-            'The more time players spend near it, the quieter and slower it becomes'
+            'The more time players spend near it, the quieter and slower it becomes.'
         ],
         notes: [
             'The Thaye has an "age" parameter that decreases its general activity.',
@@ -418,12 +467,16 @@ const ghosts: Ghost[] = [
         weaknessesShort: [],
         notes: [
             'The Mimic is able to mirror the traits of other ghosts, such as leaving a six\u2011fingered handprint that would otherwise identify an Obake.',
+            "Also mimics hunt thresholds (including Demon's hunt ability) and hunt movement speeds.",
             'The Mimic may occasionally change the ghost type that it chooses to imitate every 30 seconds to about 2 minutes.'
         ],
         evidence: [
             EvidenceType.SpiritBox,
             EvidenceType.Fingerprints,
             EvidenceType.FreezingTemps,
+            EvidenceType.Orbs
+        ],
+        guaranteedEvidence: [
             EvidenceType.Orbs
         ]
     },
@@ -437,11 +490,13 @@ const ghosts: Ghost[] = [
         weaknessesShort: [
             'The Twins will often interact with the environment at the same time.'
         ],
+        abilitiesShort: [
+            'When The Twins uses its ability, it will perform one interaction in the normal radius (up to 3 metres) and one within a larger radius (up to 16 metres).'
+        ],
         notes: [
             'Each Twin has a different moving speed during hunts. The "main" Twin is said to move at either the normal ghost speed or 10% slower, while the "decoy" Twin will move 10% faster.',
-            'The wandering twin can move separately and interact with the environment far away from the main twin.',
             'The "decoy" Twin does not set off motion sensors, and cannot respond to the Spirit Box nor spread Freezing Temperatures, but its interactions can give off EMF Level 5.',
-            'When using a crucifix in an attempt to prevent hunts, regardless of which Twin tries to hunt, the crucifix will check for the "main" Twin'
+            'Regardless of which Twin tries to hunt, a crucifix will only check the location of the "main" Twin.'
         ],
         evidence: [
             EvidenceType.Emf,
@@ -456,12 +511,8 @@ const ghosts: Ghost[] = [
         strengthsShort: [
             "Almost never touches the ground and doesn't leave footprints."
         ],
-        abilitiesShort: [
-            'Does not leave UV footprints after stepping in salt.'
-        ],
         weaknessesShort: [
-            'Has a toxic reaction to Salt.',
-            'Will become more active if it steps in salt.'
+            'Never steps in salt piles.'
         ],
         notes: [
             'When the Wraith is not hunting, it has a chance to teleport within 3 meters of a random player, generating an EMF Level 2 reading, with a 25% chance for this to be an EMF Level 5 reading instead.',
@@ -479,10 +530,10 @@ const ghosts: Ghost[] = [
         wikiUrl: 'https://phasmophobia.fandom.com/wiki/Yokai',
         sanityThreshold: 50,
         strengthsShort: [
-            'Talking near a Yokai will anger it, increasing the chance of an attack.'
+            'Talking near a Yokai will increase its activity rate and hunt threshold.'
         ],
         weaknessesShort: [
-            'When hunting, a Yokai can only hear voices close to it.'
+            'When hunting, a Yokai can only hear voices close to it (2.5 m).'
         ],
         notes: [
             "The Yokai's hunt sanity threshold is increased to 80% while players are talking within a certain range of it."
@@ -503,9 +554,14 @@ const ghosts: Ghost[] = [
         weaknessesShort: [
             "Smudging the Yurei's place of death will trap it temporarily, reducing how much it wanders."
         ],
+        abilitiesShort: [
+            "May randomly shut a door and drain nearby players' sanity."
+        ],
         notes: [
-            'Yurei prefer smoke\u2011type ghost events.',
-            'A Yurei has the ability to drop the sanity of all players within 7.5 metres by about 12.5%. When this happens, one selected door in the room that the ghost is currently in will close, similar to a manifestation ghost event, but the ghost will not actually appear or hiss.'
+            'The ability has a radius of 7.5 meters around the ghost and drains 15% sanity.',
+            'The ability fully closes the door and produces an EMF reading, but the ghost will not appear or hiss.',
+            'A Yurei is not able to use its ability if the room has no doors.',
+            'Note that all ghosts can shut a door, but a Yurei may do it more often'
         ],
         evidence: [
             EvidenceType.Orbs,
